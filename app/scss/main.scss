@@ -1,0 +1,287 @@
+@import 'config';
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1440px;
+  width: 100%;
+  position: relative;
+  @include adaptive(padding-left, 150, 25, 0);
+  @include adaptive(padding-right, 150, 25, 0);
+
+}
+
+.family {
+  &-roboto {
+    font-family: 'Roboto',
+      serif;
+  }
+
+}
+
+.popup {
+  @include _transition(all, .1s);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100500;
+  display: none;
+
+  &__overlay {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+}
+
+
+input,
+textarea {
+  padding: 10px 20px;
+  @extend .p;
+  @include _borderRadius(5px);
+  border: none;
+  background: #060b0d;
+  color: $textcolor;
+}
+
+.form__popup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: $mainColor;
+  @include _borderRadius(5px);
+  @include _transition(all, .1s);
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  z-index: 2;
+  width: 95%;
+  max-width: 500px;
+  padding: 50px 20px;
+
+
+  &-input {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 15px;
+    }
+  }
+
+  &-textarea {
+    margin-bottom: 15px;
+  }
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+
+  @include _transition(transform, .3s);
+
+  span {
+    @include _borderRadius(5%);
+    position: absolute;
+    // top: 0%;
+    right: 0%;
+    transform: rotate(45deg);
+    display: block;
+    background: $textcolor;
+    width: 100%;
+    height: 3px;
+    bottom: 10px;
+
+    &::before {
+      @include _borderRadius(5%); // top: 0%;
+      right: 0%;
+      bottom: 10px;
+      content: '';
+      position: absolute;
+      top: 0;
+      transform: rotate(-90deg);
+      display: block;
+      background: $textcolor;
+      width: 100%;
+      height: 3px;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+// .header
+.header {
+  padding-top: 30px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  // .header__wrapper
+  &__wrapper {
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.logo {
+
+  @include adaptive(width, 110, 80, 0);
+  @include adaptive(height, 80, 50, 0);
+  display: flex;
+
+}
+
+.guaranties {
+  display: flex;
+  height: 100%;
+
+  max-width: 186px;
+
+  // guaranties-img
+  &-img {
+
+    @include adaptive(width, 60, 40, 0);
+    @include adaptive(min-width, 60, 40, 0);
+    @include adaptive(height, 60, 40, 0);
+    margin-right: 7px;
+  }
+
+  // guaranties-text 
+  &-text {
+    @include adaptive(font-size, 18, 14, 0);
+    line-height: 110.18%;
+    @extend .family-roboto;
+  }
+}
+
+
+
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include adaptive(font-size, 25, 17, 0);
+  @include _borderRadius(12px);
+  @include _transition(all, .3s);
+  color: #fff;
+  background: $accent;
+  box-shadow: 0px 7px 4px -3px rgba(255, 132, 44, 0.2);
+  position: relative;
+  z-index: 2;
+
+  &::before {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: $accentSecond;
+
+    content: '';
+    left: 0;
+    right: 0;
+    position: absolute;
+    @include _borderRadius(12px);
+    @include _transition(all, .5s);
+    z-index: -2;
+    bottom: -2px;
+  }
+
+  &::after {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: $accent;
+    content: '';
+    left: 0;
+    right: 0;
+    position: absolute;
+    @include _borderRadius(12px);
+    @include _transition(all, .3s);
+    z-index: -1;
+    top: 0;
+  }
+
+  &:hover {
+    background: $accentHover;
+
+    &:before {
+      background: $accentSecondHover;
+
+    }
+  }
+
+  &:active,
+  &:focus {
+    transform: translate(0px, 2px);
+
+    &:before {
+      bottom: 0px;
+    }
+
+  }
+
+  &-header {
+    @include adaptive(font-size, 18, 14, 0);
+    width: 220px;
+    height: 48px;
+  }
+}
+
+.phone {
+
+  @extend .family-roboto;
+
+  // ._desctop
+  ._desctop {}
+
+  // ._mobile
+  ._mobile {}
+}
+
+.messengers {
+  display: flex;
+  // .messengers__icon
+
+  &__icon {
+    display: flex;
+    margin-right: 10px;
+    // ._desctop
+    @include adaptive(width, 45, 35, 0);
+    @include adaptive(min-width, 45, 35, 0);
+    @include adaptive(height, 45, 35, 0);
+
+    &._desctop {}
+
+    // ._mobile
+
+    &._mobile {
+      display: none;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.icon {}
