@@ -9,7 +9,7 @@
     <input type="hidden" name="project_name" value="Site Name" />
     <input type="hidden" name="admin_email" value="admin@mail.com" />
     <input type="hidden" name="form_subject" value="Form Subject" />
-
+    <div class="form__popup-title">Обратный звонок</div>
     <input
       required
       name="Имя"
@@ -26,15 +26,56 @@
     />
     <input
       required
-      name="E-mail"
-      placeholder="Введите e-mail"
-      type="email"
+      name="Время"
+      placeholder="Удобное время для звонка"
+      type="text"
       class="form__popup-input"
     />
 
-    <label for="popup__form-submit" class="form__popup-btn btn"
+    <label for="popup__form-submit" class="btn btn-form__popup"
       >Отправить</label
     >
     <input type="submit" value="" id="popup__form-submit" />
+    <div class="form__popup-subtitle">
+      Или напишете нам, если не хотите ждать:
+    </div>
+    <div class="popup__messengers">
+      <a
+        href="viber://chat?number=%2B375291764601"
+        class="popup__messengers-link"
+      >
+        <noscript class="loading-lazy">
+          <img
+            loading="lazy"
+            src="img/messengers/Viber.svg"
+            alt="phone"
+            class="icon"
+          />
+        </noscript>
+      </a>
+
+      <a
+        href="https://api.whatsapp.com/send?phone=375291764601"
+        class="popup__messengers-link"
+      >
+        <noscript class="loading-lazy">
+          <img
+            loading="lazy"
+            src="img/messengers/WhatsApp.svg"
+            alt="phone"
+            class="icon"
+          /> </noscript
+      ></a>
+      <a href="" class="popup__messengers-link">
+        <noscript class="loading-lazy">
+          <img
+            loading="lazy"
+            src="img/messengers/Telegram.svg"
+            alt="phone"
+            class="icon"
+          />
+        </noscript>
+      </a>
+    </div>
   </form>
 </div>

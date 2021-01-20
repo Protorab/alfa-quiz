@@ -17,20 +17,59 @@ document.addEventListener("DOMContentLoaded", () => {
   const phone = document.querySelectorAll(".telephone");
   const popupForm = document.querySelector("#popup__form");
   const formPopup = document.querySelector(".form__popup");
+  const popupLeave = document.querySelector("#popup__leave");
+  const leaveMessage = document.querySelector(".leave__message");
+  const complexProject = document.querySelector(".complex_project");
   const popupBg = document.querySelectorAll(".popup__overlay");
   const showForm = document.querySelectorAll(".show__form");
   const closePopup = document.querySelectorAll(".close");
   const sendForms = document.querySelectorAll(".send__form");
-
+  const quizNavigation = document.querySelectorAll(".quiz__navigation");
   const burgerMenu = document.querySelector(".burger__menu");
   const menu = document.querySelector(".menu");
   const body = document.querySelector("body");
+  const questions = document.querySelector(".questions");
+  const questionsHeight = document.querySelector("#question-01").offsetHeight;
   let phoneMask = new inputmask({
     mask: "+375-99-999-99-99",
     clearIncomplete: true,
     greedy: false,
   });
 
+  questions.style.height = questionsHeight + "px";
+  if (quizNavigation.length > 0) {
+    quizNavigation.forEach((btn) => {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const questionIndex = this.dataset.index;
+        const question = document.querySelector("#question-" + questionIndex);
+        const questionHeight = question.offsetHeight;
+        const answers = this.parentNode.querySelectorAll(".answer");
+        answers.forEach((answer) => {});
+        for (let i = 0; i < answers.length; i++) {
+          const answer = answers[i];
+          // if (!answer.checked) {
+          //   console.log("заполните поле");
+          //   break;
+          // } else {
+          console.log(answer.checked);
+          question.classList.add("__show");
+          questions.style.height = questionHeight + "px";
+          this.parentNode.parentNode.classList.remove("__show");
+          console.log(questionIndex);
+          if (this.classList.contains("show__gift")) {
+            complexProject.style.width = 0;
+            complexProject.style.height = 0;
+            complexProject.classList.add("__hide");
+
+            this.parentNode.parentNode.parentNode.classList.add("full-size");
+
+            // }
+          }
+        }
+      });
+    });
+  }
   if (phone.length > 0) {
     for (let i = 0; i < phone.length; i++) {
       const phoneItem = phone[i];
@@ -153,6 +192,19 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       return false;
     }
+    if (window.getComputedStyle(popupLeave).display === "flex") {
+      popupToggle(
+        popupLeave,
+        leaveMessage,
+        "animate__fadeOut",
+        "animate__bounceOutUp",
+        "animate__fadeIn",
+        "animate__bounceInDown",
+        "none",
+        1000
+      );
+      return false;
+    }
   };
 
   if (popupBg) {
@@ -178,4 +230,20 @@ document.addEventListener("DOMContentLoaded", () => {
       popupClose();
     }
   });
+  // window.onbeforeunload = function (e) {
+  //   e.preventDefault();
+
+  //   popupLeave.style.display = "flex";
+
+  //   // popupToggle(
+  //   //   popupLeave,
+  //   //   leaveMessage,
+  //   //   "animate__fadeIn",
+  //   //   "animate__bounceInDown",
+  //   //   "animate__fadeOut",
+  //   //   "animate__bounceOutUp",
+  //   //   "flex",
+  //   //   100
+  //   // );
+  // };
 });

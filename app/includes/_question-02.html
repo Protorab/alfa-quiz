@@ -1,7 +1,12 @@
 <!-- @format -->
 <!-- question-02 -->
-<div id="question-02" class="question__wrapp">
-  <div class="question__wrapp-title">Расскажите какая крыша вам нужна?</div>
+<fieldset
+  id="question-02"
+  class="question__wrapp question__wrapp-2 animate__animated"
+>
+  <legend class="question__wrapp-title">
+    Расскажите какая крыша вам нужна?
+  </legend>
   <div class="question__wrapp-subtitle">Вопрос 2</div>
   <div class="question__variables">
     <label for="var_2_1" class="question__variables-item">
@@ -16,7 +21,14 @@
       </span>
       <div class="question__variables-content">
         <div class="check__box">
-          <input type="checkbox" name="Односкатная" id="var_2_1" />
+          <input
+            name="Тип крыши"
+            type="radio"
+            value="Односкатная"
+            id="var_2_1"
+            class="answer"
+            checked="true"
+          />
           <img
             src="img/check.png"
             alt="check"
@@ -38,7 +50,13 @@
       </span>
       <div class="question__variables-content">
         <div class="check__box">
-          <input type="checkbox" name="Двускатная" id="var_2_2" />
+          <input
+            name="Тип крыши"
+            type="radio"
+            value="Двускатная"
+            id="var_2_2"
+            class="answer"
+          />
           <img
             src="img/check.png"
             alt="check"
@@ -60,7 +78,13 @@
       </span>
       <div class="question__variables-content">
         <div class="check__box">
-          <input type="checkbox" name="Вальмовая " id="var_2_3" />
+          <input
+            name="Тип крыши"
+            type="radio"
+            value="Вальмовая "
+            id="var_2_3"
+            class="answer"
+          />
           <img
             src="img/check.png"
             alt="check"
@@ -82,7 +106,13 @@
       </span>
       <div class="question__variables-content">
         <div class="check__box">
-          <input type="checkbox" name="Мансардная" id="var_2_4" />
+          <input
+            name="Тип крыши"
+            type="radio"
+            value="Мансардная"
+            id="var_2_4"
+            class="answer"
+          />
           <img
             src="img/check.png"
             alt="check"
@@ -92,7 +122,13 @@
         Мансардная
       </div>
     </label>
-    <a href="#" class="btn-quiz btn btn__active">Назад</a>
-    <a href="#" class="btn-quiz btn">Далее</a>
+    <a
+      href="#"
+      data-index="01"
+      class="btn-quiz btn btn__active quiz__navigation"
+    >
+      Назад
+    </a>
+    <a href="#" data-index="03" class="btn-quiz btn quiz__navigation">Далее</a>
   </div>
-</div>
+</fieldset>

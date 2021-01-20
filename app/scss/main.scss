@@ -19,6 +19,7 @@
 
 }
 
+// .popup__form
 .popup {
   @include _transition(all, .1s);
   position: fixed;
@@ -43,6 +44,38 @@
     background: rgba(0, 0, 0, 0.4);
     cursor: pointer;
   }
+
+  // .popup__messengers
+  &__messengers {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    // .popup__messengers-link
+    &-link {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 8px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+fieldset {
+  padding: 0;
+  border: 0;
 }
 
 input,
@@ -70,20 +103,41 @@ textarea {
   animation-duration: .5s;
   z-index: 2;
   width: 95%;
-  max-width: 500px;
+  max-width: 576px;
   padding: 50px 20px;
+  @include adaptive(padding-top, 80, 50, 0);
+  @include adaptive(padding-left, 45, 30, 0);
+  @include adaptive(padding-right, 45, 30, 0);
+  @include adaptive(padding-bottom, 65, 35, 0);
 
 
+
+  // .form__popup-title
+  &-title {
+    @extend.t3;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
+  // .form__popup-input
   &-input {
-    margin-bottom: 10px;
+    margin-bottom: 16px;
 
     &:last-child {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
   }
 
+  // .form__popup-textarea
   &-textarea {
     margin-bottom: 15px;
+  }
+
+  // .form__popup-subtitle
+  &-subtitle {
+    @extend.p;
+    margin-bottom: 15px;
+    text-align: center;
   }
 }
 
@@ -175,6 +229,10 @@ textarea {
     line-height: 110.18%;
     @extend .family-roboto;
   }
+
+  @media only screen and (max-width : 600px) {
+    display: none;
+  }
 }
 
 .btn {
@@ -259,6 +317,10 @@ textarea {
     @include adaptive(width, 220, 180, 0);
     @include adaptive(height, 50, 35, 0);
 
+    @media only screen and (max-width : 600px) {
+      display: none;
+    }
+
   }
 
   // .btn-main
@@ -274,9 +336,13 @@ textarea {
 
   // .btn-leave_requests
   &-leave_requests {
-
     @include adaptive(height, 65, 40, 0);
     width: 35%;
+
+    @media only screen and (max-width : 600px) {
+      width: 100%;
+    }
+
   }
 
   // .btn-complex_project
@@ -291,6 +357,20 @@ textarea {
     @include adaptive(height, 50, 40, 0);
 
   }
+
+  // .btn-question__send
+  &-question__send {
+    @extend .btn-leave_requests;
+  }
+
+  // .btn-form__popup
+  &-form__popup {
+    margin-top: 4px;
+    width: 100%;
+    @include adaptive(height, 50, 35, 0);
+    margin-bottom: 44px;
+
+  }
 }
 
 .phone {
@@ -298,10 +378,15 @@ textarea {
   @extend .family-roboto;
 
   // ._desctop
-  ._desctop {}
+  &._desktop {
+    @media only screen and (max-width : 800px) {
+      display: none;
+    }
+
+  }
 
   // ._mobile
-  ._mobile {}
+  &._mobile {}
 }
 
 .messengers {
@@ -322,6 +407,12 @@ textarea {
 
     &._mobile {
       display: none;
+
+      @media only screen and (max-width : 800px) {
+        display: flex;
+
+      }
+
     }
 
     &:last-child {
@@ -404,6 +495,7 @@ textarea {
 
   // .gifts-img  
   &-img {
+    position: relative;
     max-width: 361px;
     width: 100%;
     min-height: 203px;
@@ -412,6 +504,7 @@ textarea {
     @include _borderRadius(12px);
 
     img {
+      position: absolute;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -423,6 +516,16 @@ textarea {
   &-text {
     @extend .p;
     text-align: center;
+  }
+
+  @media only screen and (max-width : 900px) and (orientation:landscape) {
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+
+  @media only screen and (max-width : 600px) {
+    grid-template-columns: repeat(1, 1fr);
+
   }
 
 }
@@ -446,6 +549,14 @@ textarea {
 
     display: flex;
     justify-content: space-between;
+
+    @media only screen and (max-width : 600px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 20px;
+
+    }
+
   }
 
   // .about__item
@@ -509,11 +620,22 @@ textarea {
     display: flex;
     width: 100%;
     justify-content: space-between;
+
+    @media only screen and (max-width : 600px) {
+      flex-direction: column;
+    }
+
   }
 
   // .leave_requests-input
   &-input {
     width: 60%;
+
+    @media only screen and (max-width : 600px) {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
   }
 }
 
@@ -533,6 +655,17 @@ textarea {
   &__wrapper {
     align-items: flex-start;
     justify-content: space-between;
+
+    @media only screen and (max-width : 900px) and (orientation:landscape) {
+      flex-direction: column-reverse;
+
+    }
+
+    @media only screen and (max-width : 600px) {
+      flex-direction: column-reverse;
+
+    }
+
   }
 }
 
@@ -541,7 +674,10 @@ textarea {
   display: flex;
   flex-direction: column;
   max-width: 455px;
+  width: 40%;
   margin-top: 100px;
+  @include _transition(all, .5s);
+  overflow: hidden;
 
   // .complex_project-wrap
   &-wrap {
@@ -578,7 +714,6 @@ textarea {
     margin-bottom: 20px;
   }
 
-
   // .complex_project-check
   &-check {
     position: relative;
@@ -592,9 +727,31 @@ textarea {
 
 
   }
+
+  &.__hide {
+    transform: translate(-300%, 0)scale(0, 1);
+    // opacity: 0;
+    // width: 0;
+  }
+
+  @media only screen and (max-width : 1024px) {
+    width: 35%;
+  }
+
+  @media only screen and (max-width : 900px) and (orientation:landscape) {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  @media only screen and (max-width : 600px) {
+    margin-top: 0;
+    width: 100%;
+  }
+
 }
 
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="radio"] {
   opacity: 0;
   width: 18px;
   height: 18px;
@@ -636,6 +793,11 @@ input[type="checkbox"] {
       font-weight: 500;
     }
   }
+
+  @media only screen and (max-width : 1024px) {
+    flex-direction: column;
+  }
+
 }
 
 .check {
@@ -676,13 +838,29 @@ input[type="checkbox"] {
 }
 
 .questions {
+  position: relative;
   display: flex;
+  width: 57%;
+  height: 100%;
+  // min-height: 800px;
   flex-direction: column;
   @include _transition(all, .3s);
+  overflow: hidden;
 
   &.full-size {
     width: 100%;
   }
+
+  @media only screen and (max-width : 900px) and (orientation:landscape) {
+    width: 100%;
+    margin-bottom: 35px;
+  }
+
+  @media only screen and (max-width : 600px) {
+    width: 100%;
+    margin-bottom: 35px;
+  }
+
 }
 
 .question {
@@ -690,14 +868,23 @@ input[type="checkbox"] {
   // .question__wrapp
 
   &__wrapp {
+    position: absolute;
     display: flex;
     flex-direction: column;
     width: 100%;
+    background: $mainColor;
+    @include _transition(all, .3s);
 
     // .question__wrapp-title
     &-title {
       @extend .t3;
       text-align: center;
+
+      // .question__wrapp-title-gift
+      &-gift {
+        margin-bottom: 34px;
+        text-align: left;
+      }
     }
 
     // .question__wrapp-subtitle
@@ -706,10 +893,40 @@ input[type="checkbox"] {
       @extend .p;
       margin-bottom: 28px;
     }
+
+    transform: translate(150%, 0);
+    // &-2 {
+    //   transform: translate(150%, 0);
+    // }
+
+    // &-3 {
+    //   transform: translate(150%, 0);
+
+    // }
+
+    // &-4 {
+    //   transform: translate(150%, 0);
+    // }
+
+    // &-5 {
+    //   transform: translate(150%, 0);
+    // }
+
+    &.__show {
+      transform: translate(0%, 0);
+    }
+
+    &.__hide {
+      opacity: 0;
+      transform: translate(-150%, 0);
+    }
+
   }
 
   // .question__variables
   &__variables {
+
+
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     @include _transition(all, .2s);
@@ -724,10 +941,11 @@ input[type="checkbox"] {
 
     // .question__variables-img
     &-img {
-      width: 312px;
-      height: 206px;
-      @include adaptive(width, 300, 200, 0);
-      @include adaptive(wiheightdth, 200, 100, 0);
+      // width: 312px;
+      // height: 206px;
+      // @include adaptive(width, 300, 200, 0);
+      width: 100%;
+      @include adaptive(height, 200, 100, 0);
       overflow: hidden;
       @include _borderRadius(2px);
       margin-bottom: 10px;
@@ -738,6 +956,41 @@ input[type="checkbox"] {
         object-fit: cover;
         object-position: center;
       }
+
+      &._gift {
+        @media only screen and (max-width : 900px) and (orientation:landscape) {
+          @include adaptive(height, 300, 200, 0);
+
+        }
+
+        @media only screen and (max-width : 800px) {
+          // @include adaptive(height, 300, 100, 0);
+
+        }
+
+
+
+        @media only screen and (max-width : 600px) {
+          @include adaptive(height, 300, 200, 0);
+
+        }
+      }
+
+      @media only screen and (max-width : 1024px) {
+        // @include adaptive(width, 250, 200, 0);
+
+      }
+
+      @media only screen and (max-width : 900px) and (orientation:landscape) {
+        @include adaptive(height, 300, 200, 0);
+
+      }
+
+      @media only screen and (max-width : 600px) {
+        @include adaptive(height, 300, 200, 0);
+
+      }
+
     }
 
     // .question__variables-content
@@ -755,8 +1008,111 @@ input[type="checkbox"] {
     &._textarea {
       @include adaptive(grid-row-gap, 25, 20, 0);
     }
+
+    &._gift {
+      grid-template-columns: repeat(3, 1fr);
+      @include adaptive(margin-bottom, 70, 35, 0);
+
+      @media only screen and (max-width : 800px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media only screen and (max-width : 600px) {
+        grid-template-columns: repeat(1, 100%);
+
+      }
+
+    }
+
+    @media only screen and (max-width : 600px) {
+      grid-template-columns: repeat(1, 100%);
+    }
+
+  }
+
+  // .question__send
+  &__send {
+    @extend .leave_requests;
+
+    // .question__send-title
+    &-title {
+      @extend .leave_requests-title;
+
+    }
+
+    // .question__send-subtitle
+    &-subtitle {
+      @extend .leave_requests-subtitle;
+    }
+
+    // .question__send-inputs
+    &-inputs {
+      @extend .leave_requests-inputs;
+    }
+
+    // .question__send-input
+    &-input {
+      @extend .leave_requests-input;
+
+    }
   }
 }
+
+
+.leave {
+
+  // .leave__message
+
+  &__message {
+    max-width: 1088px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    background: $mainColor;
+    position: relative;
+    padding: 28px 28px 34px;
+
+    // .leave__message-title
+    &-title {
+      @extend .t3;
+      text-align: center;
+
+      strong {
+        font-weight: normal;
+        color: $accent;
+        margin-bottom: 14px;
+      }
+    }
+
+    // .leave__message-text
+    &-text {
+      @extend .p;
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    // .leave__message-phone
+    &-phone {
+      @extend .t3;
+      text-align: center;
+      font-weight: 500;
+      margin-bottom: 22px;
+    }
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
 
 .footer {
   padding-top: 23px;
