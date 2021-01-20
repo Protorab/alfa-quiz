@@ -14,7 +14,7 @@ window.$ = $;
 // import module example (npm i -D jquery)
 
 document.addEventListener("DOMContentLoaded", () => {
-  const phone = document.querySelector(".telephone");
+  const phone = document.querySelectorAll(".telephone");
   const popupForm = document.querySelector("#popup__form");
   const formPopup = document.querySelector(".form__popup");
   const popupBg = document.querySelectorAll(".popup__overlay");
@@ -31,8 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
     greedy: false,
   });
 
-  if (phone) {
-    phoneMask.mask(phone);
+  if (phone.length > 0) {
+    for (let i = 0; i < phone.length; i++) {
+      const phoneItem = phone[i];
+      phoneMask.mask(phoneItem);
+    }
   }
   if (burgerMenu) {
     burgerMenu.addEventListener("click", function (e) {

@@ -5,7 +5,7 @@ $accentSecond: #F07D29; // Accent second Color
 $accentSecondHover: #ed7b2a; // Hover Accent second Color
 $mainColor:#fff; // Body Background Color
 $fontsize: 10px; // Body Font Size
-$textcolor: #000; // Text Color
+$textcolor:#47525E; // Text Color
 $lineheight: 1.65; // Document Line Height
 $userfont: Roboto,
 sans-serif; // User Font Family
@@ -192,7 +192,7 @@ $maxWidthContainer:1300;
 // GENERAL DOCUMENT STYLES
 
 ::placeholder {
-	color: $textcolor;
+	color: #BFBFBF;
 }
 
 ::selection {
@@ -204,16 +204,16 @@ input,
 textarea {
 	outline: none;
 
-	&:focus:required:invalid {
-		border-color: red;
-	}
+	// &:focus:required:invalid {
+	// 	border-color: red;
+	// }
 
-	&:required:valid {
-		border-color: green;
-	}
+	// &:required:valid {
+	// 	border-color: green;
+	// }
 
 	&::-webkit-input-placeholder {
-		@include _transition(transform, .2s);
+		@include _transition(all, .2s);
 
 		transform-origin: 100% 0;
 	}
@@ -224,17 +224,17 @@ textarea {
 	}
 
 	&:-ms-input-placeholder {
-		@include _transition(transform, .2s);
+		@include _transition(all, .2s);
 		transform-origin: 100% 0;
 	}
 
 	&::-ms-input-placeholder {
-		@include _transition(transform, .2s);
+		@include _transition(all, .2s);
 		transform-origin: 100% 0;
 	}
 
 	&::placeholder {
-		@include _transition(transform, .2s);
+		@include _transition(all, .2s);
 		transform-origin: 100% 0;
 	}
 
@@ -389,6 +389,9 @@ h {
 			line-height: 134%;
 			position: relative;
 			z-index: 1;
+			font-family: 'Roboto',
+				serif;
+			font-weight: normal;
 		}
 	}
 
