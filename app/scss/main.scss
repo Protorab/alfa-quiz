@@ -190,6 +190,8 @@ textarea {
   position: relative;
   z-index: 2;
 
+
+
   &::before {
     width: 100%;
     height: 100%;
@@ -226,19 +228,28 @@ textarea {
 
     &:before {
       background: $accentSecondHover;
-
     }
   }
 
-  &:active,
-  &:focus {
-    transform: translate(0px, 2px);
+  &__active {
+    box-shadow: none;
+    color: $textcolor;
+    background: #ffffff;
 
-    &:before {
-      bottom: 0px;
+    &::before,
+    &::after {
+      display: none;
     }
 
+    border: 1px solid $accent;
+
+    &:hover {
+      background: #ffffff;
+    }
+
+
   }
+
 
   // .btn-header
   &-header {
@@ -266,6 +277,19 @@ textarea {
 
     @include adaptive(height, 65, 40, 0);
     width: 35%;
+  }
+
+  // .btn-complex_project
+  &-complex_project {
+    width: 100%;
+    @include adaptive(height, 50, 40, 0);
+
+  }
+
+  &-quiz {
+    width: 100%;
+    @include adaptive(height, 50, 40, 0);
+
   }
 }
 
@@ -494,12 +518,252 @@ textarea {
 }
 
 
+.quiz {
+
+  // .quiz__section
+
+  &__section {
+    @include adaptive(padding-top, 80, 40, 0);
+    @include adaptive(padding-bottom, 50, 30, 0);
+    min-height: 77vh;
+  }
+
+  // .quiz__wrapper
+
+  &__wrapper {
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+// .complex_project
+.complex_project {
+  display: flex;
+  flex-direction: column;
+  max-width: 455px;
+  margin-top: 100px;
+
+  // .complex_project-wrap
+  &-wrap {
+    width: 100%;
+    max-width: 410px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 25px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-bottom: 40px;
+    margin-bottom: 10px;
+    @include _borderRadius(12px);
+    border: 1px solid $accent;
+  }
+
+  // .complex_project-title
+  &-title {
+    text-align: center;
+    @extend .t4;
+    margin-bottom: 18px;
+  }
+
+  // .complex_project-subtitle
+  &-subtitle {
+    text-align: center;
+    @extend .p;
+    margin-bottom: 40px;
+  }
+
+  // .complex_project-input
+  &-input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+
+  // .complex_project-check
+  &-check {
+    position: relative;
+    font-size: 16px;
+    color: #BFBFBF;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    @include adaptive(margin-bottom, 40, 25, 0);
+
+
+  }
+}
+
+input[type="checkbox"] {
+  opacity: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  border: 1px solid #BFBFBF;
+  position: absolute;
+
+  &:checked {
+    &+.check__icon {
+      opacity: 1;
+    }
+  }
+}
+
+.bonus {
+  display: flex;
+
+  // .bonus__img
+  &__img {
+
+    @include adaptive(width, 85, 40, 0);
+    @include adaptive(min-width, 85, 40, 0);
+
+    @include adaptive(height, 95, 50, 0);
+    margin-right: 14px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+  }
+
+  // .bonus__text
+  &__text {
+    @extend .p;
+
+    strong {
+      font-weight: 500;
+    }
+  }
+}
+
+.check {
+
+  // .check__box
+  &__box {
+    position: relative;
+    border: 1px solid $accent;
+    @include _borderRadius(6px);
+    width: 32px;
+    height: 32px;
+    margin-right: 20px;
+
+    // .check__box-complex
+    &-complex {
+      width: 18px;
+      height: 18px;
+      background: #FFFFFF;
+      border: 1px solid #BFBFBF;
+      border-radius: 3px;
+      margin-right: 8px;
+    }
+  }
+
+  // .check__icon
+  &__icon {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    @include _transition(all, .2s);
+    opacity: 0;
+
+    &-complex {
+      left: 5px;
+      bottom: 5px;
+    }
+  }
+}
+
+.questions {
+  display: flex;
+  flex-direction: column;
+  @include _transition(all, .3s);
+
+  &.full-size {
+    width: 100%;
+  }
+}
+
+.question {
+
+  // .question__wrapp
+
+  &__wrapp {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    // .question__wrapp-title
+    &-title {
+      @extend .t3;
+      text-align: center;
+    }
+
+    // .question__wrapp-subtitle
+    &-subtitle {
+      text-align: center;
+      @extend .p;
+      margin-bottom: 28px;
+    }
+  }
+
+  // .question__variables
+  &__variables {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    @include _transition(all, .2s);
+    @include adaptive(grid-column-gap, 48, 20, 0);
+    @include adaptive(grid-row-gap, 75, 45, 0);
+
+    // .question__variables-item
+    &-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    // .question__variables-img
+    &-img {
+      width: 312px;
+      height: 206px;
+      @include adaptive(width, 300, 200, 0);
+      @include adaptive(wiheightdth, 200, 100, 0);
+      overflow: hidden;
+      @include _borderRadius(2px);
+      margin-bottom: 10px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    // .question__variables-content
+    &-content {
+      align-items: center;
+      display: flex;
+    }
+
+    &-textarea {
+      grid-column: 1/-1;
+      min-height: 160px;
+      padding: 22px;
+    }
+
+    &._textarea {
+      @include adaptive(grid-row-gap, 25, 20, 0);
+    }
+  }
+}
 
 .footer {
   padding-top: 23px;
   padding-bottom: 8px;
   background: #1F1F1F;
   color: #FFFFFF;
+
 
   // footer__wrapper
   &__wrapper {
