@@ -396,26 +396,26 @@ h {
 	}
 
 	&1 {
-		@include adaptive(font-size, 60, 34, 0);
+		@include adaptive(font-size, 40, 24, 0);
 	}
 
 	&2 {
 
-		@include adaptive(font-size, 42, 26, 0);
+		@include adaptive(font-size, 26, 20, 0);
 
 	}
 
 	&3 {
-		@include adaptive(font-size, 35, 24, 0);
+		@include adaptive(font-size, 22, 18, 0);
 	}
 
 	&4 {
-		@include adaptive(font-size, 26, 17, 0);
+		@include adaptive(font-size, 20, 16, 0);
 
 	}
 
 	&5 {
-		@include adaptive(font-size, 20, 13, 0);
+		@include adaptive(font-size, 18, 13, 0);
 	}
 }
 
@@ -426,7 +426,7 @@ li,
 label {
 
 	line-height: 1.35;
-	@include adaptive(font-size, 22, 16, 0);
+	@include adaptive(font-size, 18, 16, 0);
 }
 
 .burger__menu {
