@@ -29,14 +29,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const menu = document.querySelector(".menu");
   const body = document.querySelector("body");
   const questions = document.querySelector(".questions");
-  const questionsHeight = document.querySelector("#question-01").offsetHeight;
+
   let phoneMask = new inputmask({
     mask: "+375-99-999-99-99",
     clearIncomplete: true,
     greedy: false,
   });
-
-  questions.style.height = questionsHeight + "px";
+  if (questions) {
+    const questionsHeight = document.querySelector("#question-01").offsetHeight;
+    questions.style.height = questionsHeight + "px";
+  }
   if (quizNavigation.length > 0) {
     quizNavigation.forEach((btn) => {
       btn.addEventListener("click", function (e) {
@@ -44,15 +46,40 @@ document.addEventListener("DOMContentLoaded", () => {
         const questionIndex = this.dataset.index;
         const question = document.querySelector("#question-" + questionIndex);
         const questionHeight = question.offsetHeight;
-        const answers = this.parentNode.querySelectorAll(".answer");
-        answers.forEach((answer) => {});
-        for (let i = 0; i < answers.length; i++) {
-          const answer = answers[i];
-          // if (!answer.checked) {
-          //   console.log("заполните поле");
-          //   break;
-          // } else {
-          console.log(answer.checked);
+        if (this.classList.contains("_check")) {
+          const answers = this.parentNode.querySelectorAll(".answer:checked")
+            .length;
+          if (answers == 0) {
+            alert("Пожалуйста сделайте выбор");
+          } else {
+            question.classList.add("__show");
+            questions.style.height = questionHeight + "px";
+            this.parentNode.parentNode.classList.remove("__show");
+            console.log(questionIndex);
+            if (this.classList.contains("show__gift")) {
+              complexProject.style.width = 0;
+              complexProject.style.height = 0;
+              complexProject.classList.add("__hide");
+              this.parentNode.parentNode.parentNode.classList.add("full-size");
+            }
+          }
+        } else if (this.classList.contains("_check_area")) {
+          const answers = this.parentNode.querySelectorAll(".answer").value;
+          if (answers == 0) {
+            alert("Пожалуйста заполните поле");
+          } else {
+            question.classList.add("__show");
+            questions.style.height = questionHeight + "px";
+            this.parentNode.parentNode.classList.remove("__show");
+            console.log(questionIndex);
+            if (this.classList.contains("show__gift")) {
+              complexProject.style.width = 0;
+              complexProject.style.height = 0;
+              complexProject.classList.add("__hide");
+              this.parentNode.parentNode.parentNode.classList.add("full-size");
+            }
+          }
+        } else {
           question.classList.add("__show");
           questions.style.height = questionHeight + "px";
           this.parentNode.parentNode.classList.remove("__show");
@@ -61,10 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
             complexProject.style.width = 0;
             complexProject.style.height = 0;
             complexProject.classList.add("__hide");
-
             this.parentNode.parentNode.parentNode.classList.add("full-size");
-
-            // }
           }
         }
       });
@@ -114,13 +138,12 @@ document.addEventListener("DOMContentLoaded", () => {
       // };
     });
   }
-  $(".send__form").on("submit", function (e) {
+  $("form").submit(function () {
     //Change
-    e.preventDefault();
     var th = $(this);
     $.ajax({
       type: "POST",
-      url: "mail.php", //Change
+      url: "/assets/blagostroy/modx-mail.php", //Change
       data: th.serialize(),
     }).done(function () {
       alert("Thank you!");
@@ -230,20 +253,4 @@ document.addEventListener("DOMContentLoaded", () => {
       popupClose();
     }
   });
-  // window.onbeforeunload = function (e) {
-  //   e.preventDefault();
-
-  //   popupLeave.style.display = "flex";
-
-  //   // popupToggle(
-  //   //   popupLeave,
-  //   //   leaveMessage,
-  //   //   "animate__fadeIn",
-  //   //   "animate__bounceInDown",
-  //   //   "animate__fadeOut",
-  //   //   "animate__bounceOutUp",
-  //   //   "flex",
-  //   //   100
-  //   // );
-  // };
 });
