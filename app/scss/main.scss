@@ -6,8 +6,8 @@
   max-width: 1440px;
   width: 100%;
   position: relative;
-  @include adaptive(padding-left, 150, 25, 0);
-  @include adaptive(padding-right, 150, 25, 0);
+  @include adaptive(padding-left, 180, 25, 0);
+  @include adaptive(padding-right, 180, 25, 0);
 
 }
 
@@ -16,6 +16,14 @@
     font-family: 'Roboto',
       serif;
   }
+
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
 }
 
@@ -202,8 +210,8 @@ textarea {
 
 .logo {
 
-  @include adaptive(width, 110, 80, 0);
-  @include adaptive(height, 80, 50, 0);
+  @include adaptive(width, 90, 60, 0);
+  @include adaptive(height, 60, 30, 0);
   display: flex;
 
 }
@@ -217,9 +225,9 @@ textarea {
   // guaranties-img
   &-img {
 
-    @include adaptive(width, 60, 40, 0);
-    @include adaptive(min-width, 60, 40, 0);
-    @include adaptive(height, 60, 40, 0);
+    @include adaptive(width, 55, 30, 0);
+    @include adaptive(min-width, 55, 30, 0);
+    @include adaptive(height, 55, 30, 0);
     margin-right: 7px;
   }
 
@@ -313,7 +321,7 @@ textarea {
   &-header {
     @include adaptive(font-size, 18, 14, 0);
 
-    @include adaptive(width, 180, 160, 0);
+    @include adaptive(width, 200, 160, 0);
     @include adaptive(height, 45, 35, 0);
 
     @media only screen and (max-width : 600px) {
@@ -351,9 +359,10 @@ textarea {
 
   }
 
+  // .btn-quiz
   &-quiz {
     width: 100%;
-    @include adaptive(height, 50, 40, 0);
+
 
   }
 
@@ -425,8 +434,8 @@ textarea {
   // .main__section
 
   &__section {
-    @include adaptive(padding-top, 75, 40, 0);
-    @include adaptive(padding-bottom, 55, 30, 0);
+    @include adaptive(padding-top, 60, 35, 0);
+    @include adaptive(padding-bottom, 45, 25, 0);
   }
 
   // .main__wrapper
@@ -439,7 +448,7 @@ textarea {
 
   &__title {
     line-height: 115.68%;
-    @include adaptive(margin-bottom, 60, 30, 0);
+    @include adaptive(margin-bottom, 30, 20, 0);
     color: black;
   }
 
@@ -447,7 +456,7 @@ textarea {
 
   &__subtitle {
     @extend .t3;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 
     strong {
       font-weight: normal;
@@ -467,7 +476,7 @@ textarea {
   &__annotation {
     @include adaptive(font-size, 14, 12, 0);
     line-height: 140%;
-    @include adaptive(margin-bottom, 60, 30, 0);
+    @include adaptive(margin-bottom, 45, 20, 0);
 
     strong {
       font-weight: normal;
@@ -481,7 +490,7 @@ textarea {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 25px;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 
   // .gifts-item  
   &-item {
@@ -545,7 +554,7 @@ textarea {
   // .about__detail
 
   &__detail {
-    @include adaptive(margin-bottom, 110, 55, 0);
+    @include adaptive(margin-bottom, 45, 20, 0);
 
     display: flex;
     justify-content: space-between;
@@ -1138,8 +1147,8 @@ input[type="radio"] {
   // .developer__img
 
   &__img {
-    @include adaptive(width, 290, 180, 0);
-    @include adaptive(height, 70, 45, 0);
+    @include adaptive(width, 200, 180, 0);
+    @include adaptive(height, 60, 35, 0);
 
     img {
       width: 100%;
